@@ -1,0 +1,102 @@
+{% extends 'auth/base.html' %}
+{% load static %}
+{% block content %}
+              <h4 class="mb-2">Adventure starts here 🚀</h4>
+              <p class="mb-4">Make your app management easy and fun!</p>
+
+              <form id="formAuthentication" class="mb-3" action="{% url 'register' %}" method="POST">
+                <div class="mb-3">
+                  <label for="username" class="form-label">First Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="first_name"
+                    name="first_name"
+                    placeholder="Enter your First Name"
+                    autofocus
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="username" class="form-label">Last Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="last_name"
+                    name="last_name"
+                    placeholder="Enter your Last Name"
+                    autofocus
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="username" class="form-label">Mobile Number</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="mobile_number"
+                    name="mobile_number"
+                    placeholder="Enter your number"
+                    autofocus
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" />
+                </div>
+                <div class="mb-3 form-password-toggle">
+                  <label class="form-label" for="password">Password</label>
+                  <div class="input-group input-group-merge">
+                    <input
+                      type="password"
+                      id="password"
+                      class="form-control"
+                      name="password"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      aria-describedby="password"
+                    />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  </div>
+                </div>
+
+                <div class="mb-3 form-password-toggle">
+                  <label class="form-label" for="password">Confirm Password</label>
+                  <div class="input-group input-group-merge">
+                    <input
+                      type="password"
+                      id="confirm_password"
+                      class="form-control"
+                      name="confirm_password"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      aria-describedby="password"
+                    />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  </div>
+                </div>
+
+
+                <div class="mb-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" checked disabled />
+                    <label class="form-check-label" for="terms-conditions">
+                      I agree to
+                      <a href="javascript:void(0);">privacy policy & terms</a>
+                    </label>
+                  </div>
+                </div>
+                <button class="btn btn-primary d-grid w-100">Sign up</button>
+              </form>
+
+              <p class="text-center">
+                <span>Already have an account?</span>
+                <a href="{% url 'login' %}">
+                  <span>Sign in instead</span>
+                </a>
+              </p>
+            </div>
+          </div>
+          <!-- Register Card -->
+        </div>
+      </div>
+    </div>
+
+    <!-- / Content -->
+{% endblock %}
