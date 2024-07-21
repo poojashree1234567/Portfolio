@@ -124,3 +124,12 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# Email backend configuration for testing
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Default token generator for password resets
+PASSWORD_RESET_TIMEOUT_DAYS = 1  # Token expiration time in days
+
+# Default from email address for sending emails
+DEFAULT_FROM_EMAIL = 'webmaster@localhost'

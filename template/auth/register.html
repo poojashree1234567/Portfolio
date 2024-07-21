@@ -5,6 +5,7 @@
               <p class="mb-4">Make your app management easy and fun!</p>
 
               <form id="formAuthentication" class="mb-3" action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
                 <div class="mb-3">
                   <label for="username" class="form-label">First Name</label>
                   <input
@@ -28,12 +29,23 @@
                   />
                 </div>
                 <div class="mb-3">
+                  <label for="username" class="form-label">Country Code</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="country_code"
+                    name="country_code"
+                    placeholder="Enter your country code"
+                    autofocus
+                  />
+                </div>
+                <div class="mb-3">
                   <label for="username" class="form-label">Mobile Number</label>
                   <input
                     type="number"
                     class="form-control"
-                    id="mobile_number"
-                    name="mobile_number"
+                    id="phone_number"
+                    name="phone_number"
                     placeholder="Enter your number"
                     autofocus
                   />
