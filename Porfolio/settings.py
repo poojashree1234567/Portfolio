@@ -125,11 +125,30 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-# Email backend configuration for testing
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
-# Default token generator for password resets
-PASSWORD_RESET_TIMEOUT_DAYS = 1  # Token expiration time in days
+# # Email backend configuration for testing
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# # Default token generator for password resets
+# PASSWORD_RESET_TIMEOUT_DAYS = 1  # Token expiration time in days
+
+# # Default from email address for sending emails
+# DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+
+
+# Email forget password
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'poojabawankar16081999@gmail.com'  
+EMAIL_HOST_PASSWORD = 'kyykvgbazqsfjwxr' 
 
 # Default from email address for sending emails
-DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+DEFAULT_FROM_EMAIL = 'priya@yopmail.com'
+
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

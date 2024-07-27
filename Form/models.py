@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class profile(models.Model):
+class Profile(models.Model):
     user = models.OneToOneField(to  = User, on_delete = models.CASCADE)
 
     DEGREE_CHOICE =[
@@ -21,6 +21,7 @@ class profile(models.Model):
     thread_url = models.URLField(null=True, blank=True)
     facebook_url = models.URLField(null=True, blank=True)
     instagram_url = models.URLField(null=True, blank=True)
+    skype_url = models.URLField(null=True, blank=True)
     linkdin_url = models.URLField(null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
     dob = models.DateField(null=True, blank=True)
@@ -36,7 +37,7 @@ class profile(models.Model):
     hard_work = models.IntegerField(null=True, blank=True)
     i_agree = models.BooleanField(default=True, null=True, blank=True)
 
-class skill(models.Model):
+class Skill(models.Model):
     user = models.ForeignKey(to = User, on_delete = models.CASCADE)
     skill_name = models.CharField(max_length=200)
     skill_percentage = models.IntegerField()

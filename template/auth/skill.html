@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+
+<!-- =========================================================
+* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+==============================================================
+
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Created by: ThemeSelection
+* License: You must have a valid license purchased in order to legally use the theme for your project.
+* Copyright ThemeSelection (https://themeselection.com)
+
+=========================================================
+ -->
+<!-- beautify ignore:start -->
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>Admin</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'auth/assets/img/favicon/favicon.ico' %}" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="{% static 'auth/assets/vendor/fonts/boxicons.css' %}" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="{% static 'auth/assets/vendor/css/core.css' %}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{% static 'auth/assets/vendor/css/theme-default.css' %}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{% static 'auth/assets/css/demo.css' %}" />
+    
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="{% static 'auth/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css' %}" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="{% static 'auth/assets/vendor/js/helpers.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js' %} in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="{% static 'auth/assets/js/config.js' %}"></script>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+      
+        <!-- Layout container -->
+        <div class="layout-page">
+         
+
+  <!-- Content wrapper -->
+  <div class="content-wrapper">
+  
+
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+  <!-- Top Right Logout Button -->
+  <div style="position: absolute; top: 50px; right: 60px;">
+    <form action="{% url 'logout' %}" method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+  </div>
+<div class="content-wrapper">
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4">Add Skills</h4>
+        <div class="container-fluid flex-grow-1 container-p-y">
+            {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success' %}
+                <div class="alert alert-success" role="alert">
+                    {{message}}
+                </div>
+                {% elif message.tags == 'error' %}
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endif %}
+            {% endfor %}
+            {% endif %}
+            <div class="row">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h3 class="mb-0">Skill Form</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="{% url 'addskill' %}" method="post">
+                            {% csrf_token %}
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="skill_name">Skill Name</label>
+                                    <input type="text" class="form-control" id="skill_name" name="skill_name" placeholder="skill name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="skill_percentage">Skill Percentage</label>
+                                    <input type="number" class="form-control" id="skill_percentage" name="skill_percentage" placeholder="50%" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="padding: 10px 20px; border: none; border-radius: 5px; background-color: #007bff;  cursor: pointer;">Save</button>
+                        </form><br><br>
+                        <h4>Skill Table</h4>
+                        <table border="2px" class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th style="color: black;">Skill Name</th>
+                                <th style="color: black;">Skill Percentage</th>
+                                <th style="color: black; text-align: center;" colspan="2">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in skills %}
+                                <tr>
+                                    <td>{{ item.skill_name }}</td>
+                                    <td>{{ item.skill_percentage }}%</td>
+                                    <td style=" text-align: center;"><button type="button" style="background-color: #007bff; border: none; "><a href="#" style=" color: #fff; ">Edit</a></button>
+                                    <button type="button" style="background-color: #007bff; border: none; " ><a href="#" style=" color: #fff;">Delete</a></button></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Core JS -->
+    <!-- build:js auth/assets/vendor/js/core.js' %} -->
+    <script src="{% static 'auth/assets/vendor/libs/jquery/jquery.js' %}"></script>
+    <script src="{% static 'auth/assets/vendor/libs/popper/popper.js' %}"></script>
+    <script src="{% static 'auth/assets/vendor/js/bootstrap.js' %}"></script>
+    <script src="{% static 'auth/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+
+    <script src="{% static 'auth/assets/vendor/js/menu.js' %}"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+    <script src="{% static 'auth/assets/js/main.js' %}"></script>
+  </body>
+</html>
+
